@@ -39,6 +39,11 @@ public class Ditto
         }
     }
 
+    protected float TimeSinceStart()
+    {
+        return Time.time - _creationTime;
+    }
+
     public virtual bool StillAlive()
     {
         return false;

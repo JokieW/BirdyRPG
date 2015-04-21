@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Inventory : MonoBehaviour 
 {
@@ -18,6 +19,21 @@ public class Inventory : MonoBehaviour
             _current = item;
         }
         _items.Add(item);
+    }
+
+    public bool HasItem<T>()
+    {
+        return _items.Any(x => x.GetType() == typeof(T));
+    }
+
+    public T GetItem<T>()
+    {
+        return (T)(object)_items.FirstOrDefault(x => x.GetType() == typeof(T));
+    }
+
+    public T[] GetItems<T>()
+    {
+        return (T[])(object)_items.All(x => x.GetType() == typeof(T));
     }
 
     public List<Ditto> AllItems()

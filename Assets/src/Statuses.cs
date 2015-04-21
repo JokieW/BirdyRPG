@@ -18,7 +18,7 @@ public class Statuses : MonoBehaviour
         return (T)(object)_statuses.FirstOrDefault(x => x.GetType() == typeof(T));
     }
 
-    public T[] GetEffect<T>()
+    public T[] GetEffects<T>()
     {
         return (T[])(object)_statuses.All(x => x.GetType() == typeof(T));
     }

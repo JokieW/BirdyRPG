@@ -6,11 +6,6 @@ public class TargetPicker : MonoBehaviour
     [SerializeField]
     private GameObject _currentTarget;
 
-    void Start()
-    {
-        PickRandomTarget();
-    }
-
     public void PickRandomTarget()
     {
         foreach (Fighter f in GameObject.FindObjectsOfType<Fighter>())
@@ -25,5 +20,14 @@ public class TargetPicker : MonoBehaviour
     public void SetTarget(GameObject target)
     {
         _currentTarget = target;
+    }
+
+    public GameObject GetTarget()
+    {
+        if (_currentTarget == null)
+        {
+            PickRandomTarget();
+        }
+        return _currentTarget;
     }
 }

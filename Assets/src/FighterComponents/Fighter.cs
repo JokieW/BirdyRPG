@@ -10,6 +10,7 @@ using System.Collections;
 [Serializable]
 public class Fighter : MonoBehaviour 
 {
+    [SerializeField]
     private bool _isAPlayer = false;
     public bool IsAPlayer
     {

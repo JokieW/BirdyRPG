@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Battery : MonoBehaviour {
+public class Battery : Ditto 
+{
+	protected override void OnEffect(GameObject target)
+	{
+		
+	}
+	
+	public override bool StillAlive()
+	{
+	    return false;
+	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Battery(string name) : base(name) { }
 }

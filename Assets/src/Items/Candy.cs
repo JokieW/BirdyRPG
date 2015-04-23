@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Candy : MonoBehaviour {
+public class Candy : Ditto 
+{
+	protected override void OnEffect(GameObject target)
+	{
+		
+	}
+	
+	public override bool StillAlive()
+	{
+	    return false;
+	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Candy(string name) : base(name) { }
 }

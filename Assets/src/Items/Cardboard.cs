@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cardboard : MonoBehaviour {
+public class Cardboard : Ditto 
+{
+	protected override void OnEffect(GameObject target)
+	{
+		
+	}
+	
+	public override bool StillAlive()
+	{
+	    return false;
+	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Cardboard(string name) : base(name) { }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shoe : Ditto 
+public class BreadCrumb : Ditto 
 {
 	protected override void OnEffect(GameObject target)
 	{
@@ -13,5 +13,5 @@ public class Shoe : Ditto
 	    return false;
 	}
 
-    public Shoe(string name) : base(name) { }
+    public BreadCrumb(string name) : base(name) { }
 }

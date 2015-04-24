@@ -16,4 +16,14 @@ public class FighterRenderer : MonoBehaviour
         _filter = new CompCache<MeshFilter>(gameObject);
         _altimeter = new CompCache<Altimeter>(gameObject);
     }
+
+    void Update()
+    {
+        MoveTowardCurrentAltimeter();
+    }
+
+    void MoveTowardCurrentAltimeter()
+    {
+        transform.Translate(((_altimeter.get.CurrentLevel - transform.position) / 3) * Time.deltaTime * 15.0f);
+    }
 }

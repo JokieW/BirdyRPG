@@ -7,15 +7,17 @@ public class Altimeter : MonoBehaviour
     public Vector3 FloorLevel;
     public Vector3 CeilingLevel;
 
+    [SerializeField]
     private Vector3 _currentLevel;
     public Vector3 CurrentLevel
     {
         get
         {
-            return CurrentLevel;
+            return _currentLevel;
         }
     }
 
+    [SerializeField]
     private Altitude _currentAltitude;
     public Altitude CurrentAltitude
     {
@@ -36,7 +38,7 @@ public class Altimeter : MonoBehaviour
     {
         if ((int)_currentAltitude < AltCount - 1)
         {
-            _currentAltitude++;
+            CurrentAltitude++;
         }
     }
 
@@ -44,7 +46,7 @@ public class Altimeter : MonoBehaviour
     {
         if ((int)_currentAltitude > 0)
         {
-            _currentAltitude--;
+            CurrentAltitude--;
         }
     }
 

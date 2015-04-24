@@ -23,5 +23,4 @@ public class CompCache<T>
     {
         _target = go;
     }
-
 }

@@ -26,7 +26,7 @@ public class InventoryWheel : MonoBehaviour
 
     }
 
-    private ResetWheelTo(Fighter fight)
+    private void ResetWheelTo(Fighter fight)
     {
 
     }

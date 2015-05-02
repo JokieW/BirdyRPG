@@ -1,25 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EncounterEvent : MonoBehaviour {
 
-    bool cleared = false;
+    public bool oneTime = false;
+    public List<EncounterEvent> nextEvent = new List<EncounterEvent>();
 
-	// Use this for initialization
-	void Start ()
+    public virtual void Play()
     {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
-	}
+        NextEvent();
+    }
 
-    void Play()
+    public virtual bool IsCleared()
     {
+        return false;
+    }
 
+    public virtual void Reset()
+    {
+        foreach (EncounterEvent e in nextEvent)
+        {
+            e.Reset();
+        }
+    }
+
+    public virtual void NextEvent()
+    {
+        foreach (EncounterEvent e in nextEvent)
+        {
+            if(!e.IsCleared())
+            {
+                e.Play();
+                break;
+            }
+        }
     }
 
 }

@@ -4,19 +4,27 @@ using System.Collections.Generic;
 
 public class Encounter : MonoBehaviour {
 
-    List<EncounterEvent> events = new List<EncounterEvent>();
+    public List<EncounterEvent> events = new List<EncounterEvent>();
+
+    bool active = false;
 
     public void Trigger()
     {
-        
+        foreach (EncounterEvent e in events)
+        {
+            if (!e.IsCleared())
+            {
+                e.Play();
+                break;
+            }
+        }
     }
 
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.tag == "Player")
+        {
+            Trigger();
+        }
+    }
 }

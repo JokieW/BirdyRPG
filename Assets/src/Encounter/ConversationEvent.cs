@@ -24,15 +24,28 @@ public class ConversationEvent : EncounterEvent
         ".",
         "!",
         "?",
-        " "
+        " ",
+        "'"
     };
     readonly int CHARACTER_OFFSET = -97;
+
+    int eventIndex = 0;
 
     ConversationOutput conversationOutput;
 
     float speed = 0.2f;
     float timer = 0f;
 
+    public enum State
+    {
+        SLEEPING,
+        STARTING,
+        WRITING,
+        WAITING,
+        CLEARED
+    }
+
+    public State currentState = State.SLEEPING;
     bool playing = false;
     int currentIndex = 0;
 
@@ -40,30 +53,101 @@ public class ConversationEvent : EncounterEvent
     {
         conversationOutput = GameObject.Find("ConversationOutput").GetComponent<ConversationOutput>();
         DecodeMessage();
-        PlayMessage();
     }
 
     void Update()
     {
-        if(playing)
+        switch(currentState)
         {
-            if(currentIndex < decodedMessage.Count)
+            case State.STARTING:
+                Starting();
+                break;
+            case State.WRITING:
+                Writing();
+                break;
+            case State.WAITING:
+                Waiting();
+                break;
+        }        
+    }
+
+    void Starting()
+    {
+        conversationOutput.TurnOn();
+        currentState = State.WRITING;
+    }
+
+    void Writing()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            speed = 0.01f;
+        }
+        if (currentIndex < decodedMessage.Count)
+        {
+            if (timer > speed)
             {
-                if (timer > speed)
-                {
-                    conversationOutput.TickConversation(decodedMessage[currentIndex], decodedAudio[currentIndex]);
-                    currentIndex++;
-                    timer = 0f;
-                }
-                timer += Time.deltaTime;
+                conversationOutput.TickConversation(decodedMessage[currentIndex], decodedAudio[currentIndex]);
+                currentIndex++;
+                timer = 0f;
             }
-            else
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            currentState = State.WAITING;
+            currentIndex = 0;
+        }
+    }
+
+    void Waiting()
+    {
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if(eventIndex > 0)
             {
-                playing = false;
-                currentIndex = 0;
+                eventIndex--;
             }
         }
-        
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(eventIndex < nextEvent.Count - 1)
+            {
+                eventIndex++;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Finished();
+        }
+    }
+
+    void Finished()
+    {
+        if(oneTime)
+        {
+            currentState = State.CLEARED;
+        }
+        else
+        {
+            currentState = State.SLEEPING;
+            Reset();
+        }
+        conversationOutput.TurnOff();
+
+        NextEvent();
+    }
+
+    override public void NextEvent()
+    {
+        if(eventIndex > 0)
+        {
+            nextEvent[eventIndex].Play();
+        }
+        else
+        {
+            base.NextEvent();
+        }
     }
 
     void DecodeMessage()
@@ -92,8 +176,22 @@ public class ConversationEvent : EncounterEvent
         }
     }
 
-    void PlayMessage()
+    public override void Play()
     {
-        playing = true;
+        currentState = State.STARTING;
+    }
+
+    public override bool IsCleared()
+    {
+        return (currentState == State.CLEARED);
+    }
+
+    public void Reset()
+    {
+        currentState = State.SLEEPING;
+        currentIndex = 0;
+        speed = 0.2f;
+
+        base.Reset();
     }
 }

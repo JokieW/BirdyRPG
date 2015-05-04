@@ -32,19 +32,11 @@ public class ConversationEvent : EncounterEvent
 
     ConversationOutput conversationOutput;
 
-    float speed = 0.2f;
+    float speed = 0.25f;
     float timer = 0f;
 
-    public enum State
-    {
-        SLEEPING,
-        STARTING,
-        WRITING,
-        WAITING,
-        CLEARED
-    }
+    public bool oneTime = false;
 
-    public State currentState = State.SLEEPING;
     bool playing = false;
     int currentIndex = 0;
 
@@ -113,7 +105,44 @@ public class ConversationEvent : EncounterEvent
 
         conversationOutput.TurnOff();
 
+        if(oneTime)
+        {
+            currentState = State.CLEARED;
+        }
+
         NextEvent();
+    }
+
+    void AltDecodeMessage()
+    {
+        string substring = null;
+        int index = 0;
+        while(index < message.Length)
+        {
+            if(message.Substring(index, 1) == " ")
+            {
+                substring += message.Substring(index, 1);
+                decodedMessage.Add(substring);
+                substring = null;
+            }
+            else
+            {
+                substring += message.Substring(index, 1);
+                if(substring.Length == 1)
+                {
+                    decodedAudio.Add((substring[0] + "").ToLower()[0] + CHARACTER_OFFSET);
+                }
+            }
+
+            index++;
+        }
+
+        if (substring != null)
+        {
+            decodedMessage.Add(substring);
+            decodedAudio.Add(substring[0] + CHARACTER_OFFSET);
+            substring = null;
+        }
     }
 
     void DecodeMessage()

@@ -8,6 +8,18 @@ public class EncounterEvent : MonoBehaviour {
 
     //public bool oneTime = false;
 
+    public enum State
+    {
+        SLEEPING,
+        STARTING,
+        FIGHTING,
+        WRITING,
+        WAITING,
+        CLEARED
+    }
+
+    public State currentState = State.SLEEPING;
+
     public virtual void Play()
     {
         NextEvent();

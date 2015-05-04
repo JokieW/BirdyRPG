@@ -8,16 +8,6 @@ public class ItemEvent : EncounterEvent {
 
     ItemOutput itemOutput;
 
-    public enum State
-    {
-        SLEEPING,
-        STARTING,
-        WAITING,
-        CLEARED
-    }
-
-    State currentState;
-
     public override void Play()
     {
         currentState = State.STARTING;
@@ -47,6 +37,7 @@ public class ItemEvent : EncounterEvent {
         //itemOutput.SetText("You have just acquired a : " + item.handle + ".");
         currentState = State.WAITING;
         //GameObject.Find("Player").GetComponent<Inventory>().AddItem(item);
+        Debug.Log("Add item to inventory");
     }
 
     void Waiting()

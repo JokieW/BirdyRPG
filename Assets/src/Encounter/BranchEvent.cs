@@ -10,14 +10,6 @@ public class BranchEvent : EncounterEvent {
     public List<string> answers = new List<string>();
 
 	ConversationOutput conversationOutput;
-    public enum State
-    {
-        STARTING,
-        WAITING,
-        SLEEPING
-    }
-
-    State currentState = State.SLEEPING;
 
 	void Start () {
 	    conversationOutput = GameObject.Find("TextOutput").GetComponent<ConversationOutput>();

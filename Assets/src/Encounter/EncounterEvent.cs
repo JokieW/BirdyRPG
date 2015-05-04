@@ -15,6 +15,7 @@ public class EncounterEvent : MonoBehaviour {
         FIGHTING,
         WRITING,
         WAITING,
+        RESETING,
         CLEARED
     }
 

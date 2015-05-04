@@ -39,6 +39,22 @@ public class ConversationOutput : MonoBehaviour {
         textBox.SetActive(true);
     }
 
+    public void TurnOn(Sprite portrait, bool left)
+    {
+        if(left)
+        {
+            leftPortrait.SetActive(true);
+            leftPortrait.GetComponent<Image>().sprite = portrait;
+        }
+        else
+        {
+            rightPortrait.SetActive(true);
+            rightPortrait.GetComponent<Image>().sprite = portrait;
+        }
+        textPanel.SetActive(true);
+        textBox.SetActive(true);
+    }
+
     public void TurnOff()
     {
         ClearText();
@@ -48,7 +64,13 @@ public class ConversationOutput : MonoBehaviour {
         textBox.SetActive(false);
     }
 
-    void ClearText()
+    public void SetText(string text)
+    {
+        ClearText();
+        this.text.text = text;
+    }
+
+    public void ClearText()
     {
         this.text.text = "";
 

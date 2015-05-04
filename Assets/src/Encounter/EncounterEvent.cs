@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class EncounterEvent : MonoBehaviour {
 
-    public bool oneTime = false;
     public List<EncounterEvent> nextEvent = new List<EncounterEvent>();
+
+    //public bool oneTime = false;
 
     public virtual void Play()
     {

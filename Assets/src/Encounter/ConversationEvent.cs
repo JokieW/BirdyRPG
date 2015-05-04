@@ -6,6 +6,7 @@ public class ConversationEvent : EncounterEvent
 {
 
     public string message = null;
+    public Sprite portrait;
 
     List<int> decodedAudio = new List<int>();
     List<string> decodedMessage = new List<string>();
@@ -29,8 +30,6 @@ public class ConversationEvent : EncounterEvent
     };
     readonly int CHARACTER_OFFSET = -97;
 
-    int eventIndex = 0;
-
     ConversationOutput conversationOutput;
 
     float speed = 0.2f;
@@ -51,7 +50,7 @@ public class ConversationEvent : EncounterEvent
 
     void Start()
     {
-        conversationOutput = GameObject.Find("ConversationOutput").GetComponent<ConversationOutput>();
+        conversationOutput = GameObject.Find("TextOutput").GetComponent<ConversationOutput>();
         DecodeMessage();
     }
 
@@ -73,7 +72,7 @@ public class ConversationEvent : EncounterEvent
 
     void Starting()
     {
-        conversationOutput.TurnOn();
+        conversationOutput.TurnOn(portrait, false);
         currentState = State.WRITING;
     }
 
@@ -102,21 +101,7 @@ public class ConversationEvent : EncounterEvent
 
     void Waiting()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if(eventIndex > 0)
-            {
-                eventIndex--;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if(eventIndex < nextEvent.Count - 1)
-            {
-                eventIndex++;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Finished();
         }
@@ -124,30 +109,11 @@ public class ConversationEvent : EncounterEvent
 
     void Finished()
     {
-        if(oneTime)
-        {
-            currentState = State.CLEARED;
-        }
-        else
-        {
-            currentState = State.SLEEPING;
-            Reset();
-        }
+        Reset();
+
         conversationOutput.TurnOff();
 
         NextEvent();
-    }
-
-    override public void NextEvent()
-    {
-        if(eventIndex > 0)
-        {
-            nextEvent[eventIndex].Play();
-        }
-        else
-        {
-            base.NextEvent();
-        }
     }
 
     void DecodeMessage()
@@ -192,6 +158,6 @@ public class ConversationEvent : EncounterEvent
         currentIndex = 0;
         speed = 0.2f;
 
-        base.Reset();
+        //base.Reset();
     }
 }

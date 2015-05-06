@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: a2533bd4027e83b4eabcf9b3eacefdd4
+timeCreated: 1430882501
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: balloon
+    100002: battery
+    100004: bread
+    100006: can
+    100008: candy
+    100010: cardboard
+    100012: //RootNode
+    100014: copper_coin
+    100016: empty_can
+    100018: fan
+    100020: ink
+    100022: match
+    100024: milk
+    100026: paper
+    100028: phone
+    100030: ring
+    100032: rings
+    100034: rock
+    100036: shoe
+    100038: silver_coin
+    100040: spring
+    100042: water_bottle
+    100044: wire
+    400000: balloon
+    400002: battery
+    400004: bread
+    400006: can
+    400008: candy
+    400010: cardboard
+    400012: //RootNode
+    400014: copper_coin
+    400016: empty_can
+    400018: fan
+    400020: ink
+    400022: match
+    400024: milk
+    400026: paper
+    400028: phone
+    400030: ring
+    400032: rings
+    400034: rock
+    400036: shoe
+    400038: silver_coin
+    400040: spring
+    400042: water_bottle
+    400044: wire
+    2300000: balloon
+    2300002: battery
+    2300004: bread
+    2300006: can
+    2300008: candy
+    2300010: cardboard
+    2300012: copper_coin
+    2300014: empty_can
+    2300016: fan
+    2300018: ink
+    2300020: match
+    2300022: milk
+    2300024: paper
+    2300026: phone
+    2300028: ring
+    2300030: rings
+    2300032: rock
+    2300034: shoe
+    2300036: silver_coin
+    2300038: spring
+    2300040: water_bottle
+    2300042: wire
+    3300000: balloon
+    3300002: battery
+    3300004: bread
+    3300006: can
+    3300008: candy
+    3300010: cardboard
+    3300012: copper_coin
+    3300014: empty_can
+    3300016: fan
+    3300018: ink
+    3300020: match
+    3300022: milk
+    3300024: paper
+    3300026: phone
+    3300028: ring
+    3300030: rings
+    3300032: rock
+    3300034: shoe
+    3300036: silver_coin
+    3300038: spring
+    3300040: water_bottle
+    3300042: wire
+    4300000: balloon
+    4300002: battery
+    4300004: bread
+    4300006: can
+    4300008: candy
+    4300010: cardboard
+    4300012: copper_coin
+    4300014: empty_can
+    4300016: fan
+    4300018: ink
+    4300020: match
+    4300022: milk
+    4300024: paper
+    4300026: phone
+    4300028: ring
+    4300030: rings
+    4300032: rock
+    4300034: shoe
+    4300036: silver_coin
+    4300038: spring
+    4300040: water_bottle
+    4300042: wire
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
